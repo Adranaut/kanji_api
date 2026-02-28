@@ -7,7 +7,7 @@ const { mapKanjiToModel } = require("../../utils");
 class KanjiService {
   constructor() {
     this._pool = new Pool({
-      connectionString: process.env.kanji_db_POSTGRES_URL,
+      connectionString: process.env.POSTGRES_URL,
     });
   }
 
