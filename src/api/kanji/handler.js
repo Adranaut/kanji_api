@@ -15,7 +15,6 @@ class KanjiHandler {
     this._validator.validateKanjiPayload(request.payload);
     const {
       question,
-      imgUrl,
       correctAnswer,
       incorrectAnswer1,
       incorrectAnswer2,
@@ -24,7 +23,6 @@ class KanjiHandler {
 
     const kanjiId = await this._service.addKanji({
       question,
-      imgUrl,
       correctAnswer,
       incorrectAnswer1,
       incorrectAnswer2,
@@ -43,11 +41,11 @@ class KanjiHandler {
   }
 
   async getKanjiHandler() {
-    const kanji = await this._service.getKanji();
+    const kanjis = await this._service.getKanji();
     return {
       status: "success",
       data: {
-        kanji,
+        kanjis,
       },
     };
   }
@@ -67,7 +65,6 @@ class KanjiHandler {
     this._validator.validateKanjiPayload(request.payload);
     const {
       question,
-      imgUrl,
       correctAnswer,
       incorrectAnswer1,
       incorrectAnswer2,
@@ -77,7 +74,6 @@ class KanjiHandler {
 
     await this._service.editKanjiById(id, {
       question,
-      imgUrl,
       correctAnswer,
       incorrectAnswer1,
       incorrectAnswer2,

@@ -2,7 +2,6 @@ const Joi = require("joi");
 
 const KanjiPayloadSchema = Joi.object({
   question: Joi.string().required(),
-  imgUrl: Joi.string().uri().allow("").optional(),
   correctAnswer: Joi.string().required(),
   incorrectAnswer1: Joi.string().required(),
   incorrectAnswer2: Joi.string().required(),

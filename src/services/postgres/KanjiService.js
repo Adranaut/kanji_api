@@ -13,7 +13,6 @@ class KanjiService {
 
   async addKanji({
     question,
-    imgUrl,
     correctAnswer,
     incorrectAnswer1,
     incorrectAnswer2,
@@ -21,23 +20,14 @@ class KanjiService {
   }) {
     const id = nanoid(16);
 
-    let hasImg;
-    if (!imgUrl) {
-      hasImg = false;
-    } else {
-      hasImg = true;
-    }
-
     const insertedAt = new Date().toISOString();
     const updatedAt = insertedAt;
 
     const query = {
-      text: "INSERT INTO kanji VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id",
+      text: "INSERT INTO kanji VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id",
       values: [
         id,
         question,
-        imgUrl,
-        hasImg,
         correctAnswer,
         incorrectAnswer1,
         incorrectAnswer2,
@@ -79,26 +69,17 @@ class KanjiService {
     id,
     {
       question,
-      imgUrl,
       correctAnswer,
       incorrectAnswer1,
       incorrectAnswer2,
       incorrectAnswer3,
     },
   ) {
-    let hasImg;
-    if (!imgUrl) {
-      hasImg = false;
-    } else {
-      hasImg = true;
-    }
     const updatedAt = new Date().toISOString();
     const query = {
-      text: "UPDATE kanji SET question = $1, img_url = $2, has_img = $3, correct_answer = $4, incorrect_answer1 = $5, incorrect_answer2 = $6, incorrect_answer3 = $7, updated_at = $8 WHERE id = $9 RETURNING id",
+      text: "UPDATE kanji SET question = $1, correct_answer = $2, incorrect_answer1 = $3, incorrect_answer2 = $4, incorrect_answer3 = $5, updated_at = $6 WHERE id = $7 RETURNING id",
       values: [
         question,
-        imgUrl,
-        hasImg,
         correctAnswer,
         incorrectAnswer1,
         incorrectAnswer2,

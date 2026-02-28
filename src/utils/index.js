@@ -1,8 +1,6 @@
 const mapKanjiToModel = ({
   id,
   question,
-  img_url,
-  has_img,
   correct_answer,
   incorrect_answer1,
   incorrect_answer2,
@@ -12,8 +10,6 @@ const mapKanjiToModel = ({
 }) => ({
   id,
   question,
-  imgUrl: img_url,
-  hasImg: has_img,
   correctAnswer: correct_answer,
   incorrectAnswer1: incorrect_answer1,
   incorrectAnswer2: incorrect_answer2,
